@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Coding Survey</title>
+    <script src="script.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header id="survey_info">
+        <h2><a href="survey_info.html">Survey Info</a></h2>
+    </header>
+    <form>
+    <section id="welcome-section">
+        <h1>     Building with AI: Developer Survey</h1>
+        <p>This Survey takes 2 minutes.</p>
+        <div id="googleSignIn"></div>
+        <p id="userInfo" style="color:rgb(0, 201, 0);"></p>
+<button
+    type="button"
+    id="startBtn"
+    disabled
+    onclick="showQuestion('first_question')">
+    Start
+</button>    
+</section>
+
+    <section id="first_question" style="display:none;">
+        <p>QUESTION 1</p>
+        <h2>How often do you use AI coding tools (Cursor, Copilot, Claude, ChatGPT, etc.)?</h2>
+        <label><input type="radio" name="frequency" value="multiple_times_a_day">Multiple times a day</label>
+        <label><input type="radio" name="frequency" value="daily">  Daily</label>
+        <label><input type="radio" name="frequency" value="weekly"> Weekly</label>
+        <label><input type="radio" name="frequency" value="monthly"> Monthly</label>
+        <label><input type="radio" name="frequency" value="rarely"> Rarely</label>
+        <label><input type="radio" name="frequency" value="never"> Never</label>
+        <button type="button" onclick="showQuestion('welcome-section')">Previous</button>
+        <button type="button" onclick="showQuestion('second_question')">Next</button>
+    </section>
+
+    <section id="second_question" style="display:none;">
+        <p>QUESTION 2</p>
+        <h2>What is the biggest issue you face with AI-generated code?</h2>
+        <label><input type="checkbox" name="tools" value="lack_of_project_context"> Lack of project context</label>
+        <label><input type="checkbox" name="tools" value="poor_architecture_decisions"> Poor architecture decisions</label>
+        <label><input type="checkbox" name="tools" value="hard_to_maintain"> Hard to maintain</label>
+        <label><input type="checkbox" name="tools" value="introduces_bugs"> Introduces bugs</label>
+        <label><input type="checkbox" name="tools" value="creates_technical_debt"> Creates technical debt</label>
+        <label><input type="text" name="tools" placeholder="Others"></label>
+        <button type="button" onclick="showQuestion('first_question')">Previous</button>
+        <button type="button" onclick="showQuestion('third_question')">Next</button>
+    </section>
+
+    <section id="third_question" style="display:none;">
+        <p>QUESTION 3</p>
+        <h2>Which software engineering activity still requires the most manual effort today?</h2>
+        <label><input type="checkbox" name="activity" value="architecture_planning"> Architecture planning</label>
+        <label><input type="checkbox" name="activity" value="code_review"> Code review</label>
+        <label><input type="checkbox" name="activity" value="refactoring"> Refactoring</label>
+        <label><input type="checkbox" name="activity" value="testing"> Testing</label>
+        <label><input type="checkbox" name="activity" value="documentation"> Documentation</label>
+        <label><input type="checkbox" name="activity" value="debugging"> Debugging</label>
+        <label><input type="checkbox" name="activity" value="knowledge_transfer"> Knowledge transfer / onboarding</label>
+        <button type="button" onclick="showQuestion('second_question')">Previous</button>
+        <button type="button" onclick="showQuestion('fourth_question')">Next</button>
+    </section>
+
+    <section id="fourth_question" style="display:none;">
+        <p>QUESTION 4</p>
+        <h2>If you could automate one thing in software engineering that current AI tools cannot reliably do, what would it be?</h2>
+        <label><textarea name="automation" id=""></textarea></label>
+        <button type="button" onclick="showQuestion('third_question')">Previous</button>
+        <button type="button" onclick="showQuestion('fifth_question')">Next</button>
+    </section>
+
+    <section id="fifth_question" style="display:none;">
+        <p>QUESTION 5</p>
+        <h2>If you could design your ideal code editor from scratch, what is the one feature you would add that does not exist today?</h2>
+        <label><textarea name="ideal_feature" id=""></textarea></label>
+        <button type="button" onclick="showQuestion('fourth_question')">Previous</button>
+        <button type="button" onclick="showQuestion('thank_you')">Submit</button>
+    </section>
+
+    <section id="thank_you" style="display:none;">
+        <h1>Thank you for completing the survey!</h1>
+        <p>Your feedback is valuable to us.</p>
+        <h2><a class="aboutus" href="survey_info.html">About this survey</a></h2>
+    </section>
+    </form>
+</body>
+</html>

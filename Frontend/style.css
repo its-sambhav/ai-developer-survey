@@ -1,0 +1,647 @@
+/* ============================================
+   AI Coding & Developer Workflow Survey
+   Minimalist • Modern • Calm
+   Accent palette (used only on welcome & thank-you):
+     - Indigo:  #4F5DFF
+     - Mint:    #A8E6CF
+   Neutral palette (used everywhere else):
+     - Background: #FAFAF8
+     - Card:       #FFFFFF
+     - Border:     #E8E8E4
+     - Text dark:  #1F2230
+     - Text muted: #6B7280
+============================================ */
+
+:root {
+    --indigo: #6329a9;
+    --indigo-dark: #923ccc;
+    --mint: #A8E6CF;
+    --bg: #FFFFFF;
+    --card: #FFFFFF;
+    --border: #E8E8E4;
+    --text: #1F2230;
+    --text-muted: #6B7280;
+    --radius: 16px;
+    --shadow: 0 4px 24px rgba(31, 34, 48, 0.06);
+    --shadow-hover: 0 8px 32px rgba(31, 34, 48, 0.10);
+    --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-image: url('../image.png');
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 27px;
+    -webkit-font-smoothing: antialiased;
+    flex-direction: column;
+}
+header {
+    position: fixed;
+    top: 24px;
+    right: 32px;
+    z-index: 1000;
+}
+
+header h2 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+header a {
+    text-decoration: none;
+    color: var(--indigo);
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(41, 52, 169, 0.12);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+}
+
+header a:hover {
+    background: white;
+    color: var(--indigo-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+form {
+    width: 100%;
+    max-width: 540px;
+}
+
+/* ============================================
+   SECTIONS — shared card layout + transition
+============================================ */
+
+section {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 31px 27px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10), 0 4px 12px rgba(0, 0, 0, 0.10);
+    animation: fadeSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   WELCOME SECTION — accent colors live here
+============================================ */
+
+#welcome-section {
+    background: #FFFFFF;
+    color: var(--text);
+    text-align: center;
+    padding: 40px 24px;
+}
+
+#welcome-section::before {
+    display: none;
+}
+
+#welcome-section::after {
+    display: none;
+}
+
+
+
+#startBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+}
+#userInfo {
+    margin-top: 16px;
+    margin-bottom: 12px !important;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-align: center;
+}
+
+
+
+#welcome-section h1 {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+#welcome-section p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+#googleSignIn {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+#welcome-section label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+    margin-top: 12px;
+    text-align: left;
+}
+
+#welcome-section input::placeholder {
+    color: #999999;
+}
+
+#welcome-section input:focus {
+    border-color: var(--indigo);
+    box-shadow: 0 0 0 3px rgba(41, 52, 169, 0.1);
+}
+
+/* ============================================
+   QUESTION SECTIONS — neutral, calm
+============================================ */
+
+.question-tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--indigo);
+    color: #FFFFFF;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin-bottom: 20px;
+}
+
+section p:first-of-type {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 32px;
+    padding: 0 8px;
+    color: #000000;
+    font-size: 0.8rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+section h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--text);
+    margin-bottom: 42px;
+}
+
+/* ============================================
+   OPTIONS — radio / checkbox cards
+============================================ */
+
+section label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    margin-bottom: 6px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 1.03rem;
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color var(--transition), background var(--transition), transform 0.15s ease;
+}
+
+section label:hover {
+    border-color: var(--indigo);
+    background: #ffffff;
+    transform: translateX(2px);
+}
+
+section label:has(input:checked) {
+    border-color: var(--indigo);
+    background: var(--indigo);
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+/* hide native radio/checkbox visually, replace with lettered tag */
+section label input[type="radio"],
+section label input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    background: #FFFFFF;
+    cursor: pointer;
+    position: relative;
+    transition: all var(--transition);
+    flex-shrink: 0;
+}
+
+section label input[type="radio"]:checked,
+section label input[type="checkbox"]:checked {
+    background: var(--indigo);
+    border-color: var(--indigo);
+}
+
+section label input[type="radio"]:checked::after,
+section label input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #FFFFFF;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+/* "Others" text input row */
+section label input[type="text"] {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--text);
+    outline: none;
+    padding: 4px 0;
+    order: 2;
+}
+
+section label:has(input[type="text"]) {
+    background: var(--bg);
+}
+
+section label:has(input[type="text"]:focus) {
+    border-color: var(--indigo);
+}
+
+/* textarea questions (4 & 5) */
+section textarea {
+    width: 100%;
+    min-height: 110px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+    font-family: inherit;
+    font-size: 0.92rem;
+    color: var(--text);
+    resize: vertical;
+    outline: none;
+    transition: border-color var(--transition);
+    margin-bottom: 12px;
+}
+
+section textarea::placeholder {
+    color: var(--text-muted);
+}
+
+section textarea:focus {
+    border-color: var(--indigo);
+    background: #FFFFFF;
+}
+
+/* ============================================
+   BUTTONS
+============================================ */
+
+section > button {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    padding: 11px 20px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: transform 0.15s ease, box-shadow var(--transition), background var(--transition);
+}
+
+section > button:last-of-type {
+    background: var(--indigo);
+    color: #FFFFFF;
+    float: right;
+}
+
+section > button:last-of-type:hover {
+    background: var(--indigo-dark);
+    box-shadow: 0 4px 16px rgba(79, 93, 255, 0.35);
+    transform: translateY(-1px);
+}
+
+section > button:first-of-type:not(:last-of-type) {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+}
+
+section > button:first-of-type:not(:last-of-type):hover {
+    border-color: var(--text-muted);
+    color: var(--text);
+}
+
+/* Start button on welcome */
+#welcome-section button {
+    width: 100%;
+    background: var(--indigo);
+    color: #FFFFFF;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 20px;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+    display: block;
+    margin: 0;
+    margin-top: 24px;
+    float: none;
+}
+
+#welcome-section button:hover {
+    background: var(--indigo-dark);
+    box-shadow: 0 4px 12px rgba(41, 52, 169, 0.2);
+}
+
+/* button row clearfix for question sections */
+section::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/* ============================================
+   PROGRESS DOTS
+============================================ */
+
+.progress-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.progress-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: background var(--transition), transform var(--transition);
+}
+
+.progress-dots span.active {
+    background: var(--indigo);
+    transform: scale(1.3);
+}
+
+/* ============================================
+   THANK YOU SECTION — accent + animation
+============================================ */
+
+#thank_you {
+    background: white;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 40px 24px;
+    color: Black;
+}
+
+#thank_you .check-circle {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 24px;
+    background: var(--indigo);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+}
+
+#thank_you .check-circle svg {
+    width: 32px;
+    height: 32px;
+    stroke: #FFFFFF;
+    stroke-width: 3;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 40;
+    stroke-dashoffset: 40;
+    animation: drawCheck 0.5s ease forwards 0.4s;
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes drawCheck {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+#thank_you h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    animation: fadeSlideIn 0.6s ease 0.2s both;
+}
+
+#thank_you p {
+    font-size: 0.95rem;
+    color: var(--indigo-dark);
+    opacity: 0.8;
+    animation: fadeSlideIn 0.6s ease 0.35s both;
+}
+
+/* floating confetti dots */
+#thank_you .confetti {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: floatUp 3s ease-in-out infinite;
+}
+
+#thank_you .confetti:nth-child(1) {
+    width: 14px; height: 14px; left: 12%; top: 70%;
+    background: var(--indigo); animation-delay: 0s;
+}
+#thank_you .confetti:nth-child(2) {
+    width: 10px; height: 10px; left: 80%; top: 65%;
+    background: #FFFFFF; animation-delay: 0.6s;
+}
+#thank_you .confetti:nth-child(3) {
+    width: 18px; height: 18px; left: 65%; top: 80%;
+    background: var(--indigo); opacity: 0.3; animation-delay: 1.2s;
+}
+#thank_you .confetti:nth-child(4) {
+    width: 8px; height: 8px; left: 25%; top: 30%;
+    background: #FFFFFF; animation-delay: 1.8s;
+}
+.aboutus {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--indigo);
+    text-decoration: none;
+    border: 1px solid var(--indigo);
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-30px) scale(1.2);
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.6;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY
+============================================ */
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--indigo);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+
+@media (max-width: 480px) {
+    body {
+        padding: 16px;
+    }
+header {
+    top: 18px;
+    right: 12px;
+}
+
+header h2 {
+    font-size: 0.8rem;
+}
+
+header a {
+    padding: 8px 12px;
+}
+    section {
+        padding: 20px 16px;
+        border-radius: 12px;
+    }
+
+    #welcome-section {
+        padding: 32px 16px;
+    }
+
+    #welcome-section h1 {
+        font-size: 1.3rem;
+        margin-bottom: 6px;
+    }
+
+    #welcome-section p {
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+
+
+    section h2 {
+        font-size: 1.05rem;
+        margin-bottom: 14px;
+    }
+
+    section label {
+        padding: 9px 10px;
+        margin-bottom: 5px;
+        font-size: 0.88rem;
+    }
+
+    section label input[type="radio"],
+    section label input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+    }
+
+    section > button {
+        font-size: 0.85rem;
+        padding: 10px 16px;
+        margin-top: 10px;
+    }
+
+    section textarea {
+        min-height: 100px;
+        font-size: 0.88rem;
+        padding: 10px 12px;
+    }
+
+    #thank_you {
+        padding: 32px 16px;
+    }
+}

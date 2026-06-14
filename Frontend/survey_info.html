@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About This Survey</title>
+
+<style>
+:root {
+    --indigo: #6329a9;
+    --indigo-dark: #923ccc;
+    --text: #1F2230;
+    --text-muted: #6B7280;
+    --radius: 18px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-image: url('/image.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.container {
+    width: 100%;
+    max-width: 850px;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow:
+        0 4px 12px rgba(0,0,0,0.08),
+        0 12px 32px rgba(0,0,0,0.08);
+}
+
+h1 {
+    color: var(--text);
+    font-size: 1.9rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+.section {
+    margin-bottom: 16px;
+}
+
+.section h2 {
+    color: var(--indigo);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.section p {
+    color: var(--text);
+    font-size: 0.94rem;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+.linkedin-box {
+    margin-top: 10px;
+    padding: 14px;
+    border-radius: 12px;
+    background: #f7f8ff;
+    border: 1px solid #dfe3ff;
+}
+
+.linkedin-box strong {
+    color: var(--text);
+}
+
+.linkedin-box a {
+    color: var(--indigo);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.linkedin-box a:hover {
+    text-decoration: underline;
+}
+
+.back-btn {
+    display: inline-block;
+    background: var(--indigo);
+    color: white;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.2s ease;
+    margin-top: 6px;
+}
+
+.back-btn:hover {
+    background: var(--indigo-dark);
+}
+
+/* MOBILE VIEW */
+
+@media (max-width: 768px) {
+
+    body {
+        padding: 12px;
+        align-items: center;
+    }
+
+    .container {
+        width: calc(100vw - 24px);
+        max-width: none;
+        padding: 24px;
+        border-radius: 16px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 6px;
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 30px;
+        line-height: 1.4;
+    }
+
+    .section {
+        margin-bottom: 20px;
+    }
+
+    .section h2 {
+        font-size: 1.05rem;
+        margin-bottom: 1px;
+    }
+
+    .section p {
+        font-size: 0.92rem;
+        line-height: 1.55;
+        MARGIN-BOTTOM: 18PX;
+    }
+
+    .linkedin-box {
+        padding: 12px 16px;
+        margin-top: 8px;
+    }
+
+    .linkedin-box p {
+        margin-bottom: 4px !important;
+        font-size: 0.95rem;
+    }
+
+    .linkedin-box a {
+        font-size: 0.95rem;
+    }
+
+    .back-btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>About This Survey</h1>
+
+    <p class="subtitle">
+        Exploring how developers use AI and where the next generation of tools can improve.
+    </p>
+
+    <div class="section">
+        <h2>Purpose</h2>
+        <p>
+            This survey collects feedback from developers on AI-assisted coding,
+            current workflow challenges, and opportunities for better development tools.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>How Responses Are Used</h2>
+        <p>
+            Responses help validate ideas, identify common pain points, and guide
+            future research and product development.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Privacy</h2>
+        <p>
+            Your name and email are collected only to identify unique responses.
+            Your information is never sold or shared.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>Connect</h2>
+
+        <p style="margin-bottom: 12px;">
+            Have an idea, suggestion, or question? We'd love to hear from you.
+        </p>
+
+        <div class="linkedin-box">
+            <p style="margin-bottom: 8px;">
+                👨‍💻 <strong>Sambhav Jain</strong>
+            </p>
+
+            <a href="https://www.linkedin.com/in/sambhav-jain-2b9793202/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Connect on LinkedIn →
+            </a>
+        </div>
+
+        <div class="linkedin-box">
+            <p style="margin-bottom: 8px;">
+                👨‍💻 <strong>Aditya Garg</strong>
+            </p>
+
+            <a href="https://www.linkedin.com/in/aditya27garg/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Connect on LinkedIn →
+            </a>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-btn">
+        ← Back to Survey
+    </a>
+
+</div>
+
+</body>
+</html>
