@@ -20,7 +20,7 @@ window.onload = function () {
         }
     );
 };
-async function startSurvey() {
+async function startSurvey(event) {
 
        if(event){
 
@@ -86,7 +86,17 @@ async function handleCredentialResponse(response) {
         console.log("Status:", res.status);
 
         const data = await res.json();
+if (data.alreadySubmitted) {
 
+    document.getElementById("userInfo")
+        .innerHTML =
+        "✓ Your response has already been submitted.";
+
+    document.getElementById("startBtn")
+        .disabled = true;
+
+    return;
+}
         console.log("BACKEND DATA:", data);
 
         if (!data.success) {
@@ -133,9 +143,18 @@ async function handleCredentialResponse(response) {
 
 
 function hideAllSections() {
+
     sections.forEach(id => {
-        document.getElementById(id).style.display = 'none';
+
+        const element =
+            document.getElementById(id);
+
+        if (element) {
+            element.style.display = "none";
+        }
+
     });
+
 }
 
 function showQuestion(questionId) {
@@ -189,4 +208,107 @@ function showQuestion(questionId) {
 
     hideAllSections();
     document.getElementById(questionId).style.display = 'block';
+}
+
+async function submitSurvey() {
+
+    const submitButton =
+    document.querySelector(
+        'button[onclick="submitSurvey()"]'
+    );
+
+submitButton.disabled = true;
+
+    try {
+
+        const token =
+            localStorage.getItem("jwt");
+
+        const q1 =
+            document.querySelector(
+                'input[name="frequency"]:checked'
+            )?.value;
+
+        const q2 = [];
+
+        document
+            .querySelectorAll(
+                'input[name="tools"]:checked'
+            )
+            .forEach(
+                item => q2.push(item.value)
+            );
+
+        const otherTool =
+            document.querySelector(
+                'input[name="tools"][type="text"]'
+            ).value.trim();
+
+        if (otherTool) {
+            q2.push(otherTool);
+        }
+
+        const q3 = [];
+
+        document
+            .querySelectorAll(
+                'input[name="activity"]:checked'
+            )
+            .forEach(
+                item => q3.push(item.value)
+            );
+
+        const q4 =
+            document.querySelector(
+                'textarea[name="automation"]'
+            ).value.trim();
+
+        const q5 =
+            document.querySelector(
+                'textarea[name="ideal_feature"]'
+            ).value.trim();
+
+        const res = await fetch(
+            "http://localhost:10000/api/survey",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type":
+                        "application/json",
+                    "Authorization":
+                        `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    q1,
+                    q2,
+                    q3,
+                    q4,
+                    q5
+                })
+            }
+        );
+
+        const data =
+            await res.json();
+
+        console.log(data);
+
+        if (data.success) {
+
+            showQuestion(
+                "thank_you"
+            );
+
+        }
+
+    } catch(error) {
+submitButton.disabled = false;
+        console.error(error);
+
+     alert(
+    data.error || "Submission failed"
+);
+
+    }
+
 }
