@@ -21,25 +21,71 @@ window.onload = function () {
     );
 };
 
-function handleCredentialResponse(response) {
+async function handleCredentialResponse(response) {
 
-    const payload = JSON.parse(
-        atob(response.credential.split('.')[1])
-    );
+    console.log("GOOGLE CALLBACK FIRED");
 
-userName = payload.name;
-userEmail = payload.email;
+    try {
 
-    document.getElementById("userInfo").innerHTML =
-            `✓ Continuing as ${userName}`;
+        console.log("Sending request to backend...");
 
-    document.getElementById("startBtn").disabled = false;
+        const res = await fetch(
+            "http://localhost:10000/api/start",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    googleToken: response.credential
+                })
+            }
+        );
 
-    console.log("Name:", userName);
-    console.log("Email:", userEmail);
+        console.log("Status:", res.status);
+
+        const data = await res.json();
+
+        console.log("BACKEND DATA:", data);
+
+        if (!data.success) {
+            throw new Error("Authentication failed");
+        }
+
+        // Save JWT from backend
+        localStorage.setItem("jwt", data.token);
+
+        // Decode Google payload for UI only
+        const payload = JSON.parse(
+            atob(response.credential.split('.')[1])
+        );
+
+        userName = payload.name;
+        userEmail = payload.email;
+
+        console.log("USERNAME:", userName);
+
+        // Show signed-in user
+        const userInfo =
+            document.getElementById("userInfo");
+
+        if (userInfo) {
+            userInfo.innerHTML =
+                `✓ Continuing as ${userName}`;
+        }
+
+        // Enable Start button
+        document.getElementById("startBtn").disabled = false;
+
+        console.log("Login Success");
+
+    } catch (error) {
+
+        console.error("FULL ERROR:", error);
+
+        alert("Google verification failed");
+    }
 }
-
-
 
 
 
