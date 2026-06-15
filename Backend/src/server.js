@@ -1,13 +1,24 @@
-const express = require("express");
+require("dotenv").config();
 
-const app = express();
+const pool = require("./database/pool");
+const app = require("./app");
 
 const PORT = process.env.PORT || 10000;
 
-app.get("/", (req, res) => {
-    res.send("Survey Backend Running");
-});
+async function startServer() {
+  try {
+    const result = await pool.query("SELECT NOW()");
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+    console.log("Database Connected ✅");
+    console.log(result.rows[0]);
+
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("Database Connection Failed ❌");
+    console.error(error);
+  }
+}
+
+startServer();
