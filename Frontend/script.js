@@ -34,7 +34,7 @@ async function startSurvey(event) {
             localStorage.getItem("jwt");
 
         const res = await fetch(
-            "http://localhost:10000/api/start-survey",
+            "https://survey-backend-gigq.onrender.com/api/start-survey",
             {
                 method: "POST",
                 headers: {
@@ -71,7 +71,7 @@ async function handleCredentialResponse(response) {
         console.log("Sending request to backend...");
 
         const res = await fetch(
-            "http://localhost:10000/api/start",
+            "https://survey-backend-gigq.onrender.com/api/start",
             {
                 method: "POST",
                 headers: {
@@ -269,7 +269,7 @@ submitButton.disabled = true;
             ).value.trim();
 
         const res = await fetch(
-            "http://localhost:10000/api/survey",
+            "https://survey-backend-gigq.onrender.com/api/survey",
             {
                 method: "POST",
                 headers: {
@@ -294,7 +294,7 @@ submitButton.disabled = true;
         console.log(data);
 
         if (data.success) {
-
+    localStorage.removeItem("jwt");
             showQuestion(
                 "thank_you"
             );
@@ -302,13 +302,15 @@ submitButton.disabled = true;
         }
 
     } catch(error) {
-submitButton.disabled = false;
-        console.error(error);
 
-     alert(
-    data.error || "Submission failed"
-);
+    submitButton.disabled = false;
 
-    }
+    console.error(error);
+
+    alert(
+        error.message || "Submission failed"
+    );
+
+}
 
 }
