@@ -32,7 +32,8 @@ Start
     <section id="first_question" style="display:none;">
         <p>QUESTION 1</p>
         <h2>How often do you use AI coding tools (Cursor, Copilot, Claude, ChatGPT, etc.)?</h2>
-        <label><input type="radio" name="frequency" value="multiple_times_a_day">Multiple times a day</label>
+<p class="question-desc">Select one option.</p>   
+         <label><input type="radio" name="frequency" value="multiple_times_a_day">Multiple times a day</label>
         <label><input type="radio" name="frequency" value="daily">  Daily</label>
         <label><input type="radio" name="frequency" value="weekly"> Weekly</label>
         <label><input type="radio" name="frequency" value="monthly"> Monthly</label>
@@ -45,6 +46,7 @@ Start
     <section id="second_question" style="display:none;">
         <p>QUESTION 2</p>
         <h2>What is the biggest issue you face with AI-generated code?</h2>
+    <p class="question-desc">Select at least 2 options.</p>
         <label><input type="checkbox" name="tools" value="lack_of_project_context"> Lack of project context</label>
         <label><input type="checkbox" name="tools" value="poor_architecture_decisions"> Poor architecture decisions</label>
         <label><input type="checkbox" name="tools" value="hard_to_maintain"> Hard to maintain</label>
@@ -58,6 +60,7 @@ Start
     <section id="third_question" style="display:none;">
         <p>QUESTION 3</p>
         <h2>Which software engineering activity still requires the most manual effort today?</h2>
+        <p class="question-desc"> Select options that apply to your workflow.</p>
         <label><input type="checkbox" name="activity" value="architecture_planning"> Architecture planning</label>
         <label><input type="checkbox" name="activity" value="code_review"> Code review</label>
         <label><input type="checkbox" name="activity" value="refactoring"> Refactoring</label>
@@ -72,6 +75,9 @@ Start
     <section id="fourth_question" style="display:none;">
         <p>QUESTION 4</p>
         <h2>If you could automate one thing in software engineering that current AI tools cannot reliably do, what would it be?</h2>
+        <p class="question-desc">
+    Share your thoughts.
+</p>
         <label><textarea name="automation" id=""></textarea></label>
         <button type="button" onclick="showQuestion('third_question')">Previous</button>
         <button type="button" onclick="showQuestion('fifth_question')">Next</button>
@@ -80,6 +86,9 @@ Start
     <section id="fifth_question" style="display:none;">
         <p>QUESTION 5</p>
         <h2>If you could design your ideal code editor from scratch, what is the one feature you would add that does not exist today?</h2>
+        <p class="question-desc">
+    Share your thoughts.
+</p>
         <label><textarea name="ideal_feature" id=""></textarea></label>
        
        
