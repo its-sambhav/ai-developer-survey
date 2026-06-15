@@ -14,19 +14,19 @@
     <header id="survey_info">
         <h2><a href="survey_info.html">Survey Info</a></h2>
     </header>
-    <form>
+<form onsubmit="return false;">
     <section id="welcome-section">
         <h1>     Building with AI: Developer Survey</h1>
         <p>This Survey takes 2 minutes.</p>
         <div id="googleSignIn"></div>
         <p id="userInfo" style="color:rgb(0, 201, 0);"></p>
 <button
-    type="button"
-    id="startBtn"
-    disabled
-    onclick="showQuestion('first_question')">
-    Start
-</button>    
+type="button"
+id="startBtn"
+onclick="startSurvey(event)"
+disabled>
+Start
+</button>
 </section>
 
     <section id="first_question" style="display:none;">

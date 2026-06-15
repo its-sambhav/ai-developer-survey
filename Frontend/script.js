@@ -20,7 +20,48 @@ window.onload = function () {
         }
     );
 };
+async function startSurvey() {
 
+       if(event){
+
+        event.preventDefault();
+
+    }
+    console.log("START BUTTON CLICKED");
+    try {
+
+        const token =
+            localStorage.getItem("jwt");
+
+        const res = await fetch(
+            "http://localhost:10000/api/start-survey",
+            {
+                method: "POST",
+                headers: {
+                    "Authorization":
+                        `Bearer ${token}`
+                }
+            }
+        );
+        console.log("STATUS:", res.status);
+        const data =
+            await res.json();
+        console.log("DATA:", data);
+        if (!data.success) {
+            throw new Error();
+        }
+
+        showQuestion("first_question");
+
+    } catch (error) {
+        console.error(error);
+        alert(
+            "Authentication failed"
+        );
+
+    }
+
+}
 async function handleCredentialResponse(response) {
 
     console.log("GOOGLE CALLBACK FIRED");

@@ -17,6 +17,7 @@ CREATE TABLE users (
 
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     last_login TIMESTAMP NOT NULL DEFAULT NOW()
+    
 );
 
 -- =========================================
