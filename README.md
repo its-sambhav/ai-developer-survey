@@ -1,4 +1,3 @@
-I’ll put it in a single copy-paste block below.
 
 AI Developer Survey
 
